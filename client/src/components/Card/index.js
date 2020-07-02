@@ -5,9 +5,9 @@ import React from "react";
 // All of the props passed to this component are spread onto the input element
 function Card(props) {
   return (
-    <div class="card mb-4">
-      <div class="card-header">{props.title}</div>
-      <div class="card-body">{props.children}</div>
+    <div className="card mb-4">
+      <div className="card-header">{props.title}</div>
+      <div className="card-body">{props.children}</div>
     </div>
   );
 }
