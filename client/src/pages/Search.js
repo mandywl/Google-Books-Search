@@ -6,36 +6,48 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import { BookList, BookListItem } from "../components/BookList";
 import API from "../utils/API";
-// import { useStoreContext } from "../utils/GlobalState";
-// import { SET_CURRENT_BOOK, ADD_FAVORITE } from "../utils/actions";
 
 function Search(props) {
   const [books, setBooks] = useState([]);
   const [bookSearch, setBookSearch] = useState("");
-  // const [state, dispatch] = useStoreContext();
+  const [bookSaved, setBookSaved] = useState(false);
 
   useEffect(() => {
     API.getFavouriteBooks(props.match.params.id)
-      // .then((res) => dispatch({ type: SET_CURRENT_BOOK, book: res.data }))
       .catch((err) => console.log(err));
   }, []);
 
+  const getBook = id => {
+    API.getFavouriteBook(id)
+      .then((res) => {
+        console.log("res is", res.data);
+        if(res.data._id===id) {
+          setBookSaved(true);
+        } else {
+          setBookSaved(false);
+        }
+      }
+      )
+      .catch((err) => console.log(err));
+  };
+
   const addFavorite = (book) => {
+    console.log(book.volumeInfo);
     API.saveFavouriteBook({
       title: book.volumeInfo.title,
       description: book.volumeInfo.description,
       href: book.volumeInfo.infoLink,
+      author: book.volumeInfo.authors[0],
       thumbnail: book.volumeInfo.imageLinks.smallThumbnail,
     })
-      // .then((result) => {
-      //   console.log(result);
-      //   dispatch({
-      //     type: ADD_FAVORITE,
-      //     favorites: result.data,
-      //   });
-      // })
+      .then((result) => {
+        console.log(result.data._id);
+        getBook(result.data._id);
+      })
       .catch((err) => console.log(err));
+
   };
+
 
   const handleInputChange = (event) => {
     // Destructure the name and value properties off of event.target
@@ -89,7 +101,10 @@ function Search(props) {
                         title={book.volumeInfo.title}
                         description={book.volumeInfo.description}
                         href={book.volumeInfo.infoLink}
+                        author={book.volumeInfo.authors}
                         thumbnail={book.volumeInfo.imageLinks.smallThumbnail}
+                        buttonName="Save"
+                        className={bookSaved? ("disable"):("test")}
                         onclick={() => addFavorite(book)}
                       />
                     );
