@@ -9,7 +9,7 @@ export function BookList({ children }) {
 }
 
 // BookListItem renders a bootstrap list item containing data from the recipe api call
-export function BookListItem({ thumbnail, title, description, href }) {
+export function BookListItem({ thumbnail, title, description, href, onclick }) {
   return (
     <li className="list-group-item">
       <Container>
@@ -20,7 +20,7 @@ export function BookListItem({ thumbnail, title, description, href }) {
           <Col size="lg-10">
             <Row>
               <Col size="lg-8">
-                <h3>{title}</h3>
+                <h3 className='["title"]'>{title}</h3>
               </Col>
               <Col size="lg-3">
                 <Row>
@@ -35,7 +35,9 @@ export function BookListItem({ thumbnail, title, description, href }) {
                     </a>
                   </Col>
                   <Col size="xs-5">
-                    <Button type="success">Save</Button>
+                    <Button type="success" onClick={onclick}>
+                      Save
+                    </Button>
                   </Col>
                 </Row>
               </Col>
