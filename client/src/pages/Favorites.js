@@ -35,8 +35,8 @@ function Favorites() {
         <Row>
           <Col size="xs-3 sm-12">
             <Card title="Saved Books">
-              {!favourites ? (
-                <h1 className="text-center">No Books to Display</h1>
+              {favourites.length<1 ? (
+                <h1 className="text-center">No Favorites to Display</h1>
               ) : (
                 <BookList>
                   {favourites.map((book) => {
