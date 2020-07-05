@@ -7,7 +7,7 @@
 ### 🏠 [Deployed Url](https://github.com/mandywl/Google-Books-Search)
 
 <div align="center">
-<img alt="Google Book Search" src= "public/assets/appScreenCapture.gif" width= 60%/>
+<img alt="Google Book Search" src= "appScreenCapture.gif" width= 60%/>
 </div>
 
 ## Install
