@@ -2,9 +2,9 @@
 
 > This is a React-based Google Books Search app where user can search for books via the Google Books API, save a book, view a book and delete a book. 
 
-### ✨ [Github Repo](https://books-search-mandy.herokuapp.com/)
+### ✨ [Github Repo](https://github.com/mandywl/Google-Books-Search )
 
-### 🏠 [Deployed Url](https://github.com/mandywl/Google-Books-Search)
+### 🏠 [Deployed Url](https://books-search-mandy.herokuapp.com/)
 
 <div align="center">
 <img alt="Google Book Search" src= "appScreenCapture.gif" width= 60%/>
